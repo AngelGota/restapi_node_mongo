@@ -1,10 +1,14 @@
 const express = require("express");
+const { getItems, getItem, createItem } = require("../controllers/tracks");
 const router = express.Router();
 
-// GET http://localhost:2609/tracks
-router.get("/", (req, res) => {
-  const dataXample = ["track1", "track2", "track3"];
-  res.send({ dataXample });
-});
+// GET /tracks
+router.get("/", getItems);
+
+// GET /tracks/:id
+router.get("/:id", getItem);
+
+// POST /tracks
+router.post("/new", createItem);
 
 module.exports = router;
